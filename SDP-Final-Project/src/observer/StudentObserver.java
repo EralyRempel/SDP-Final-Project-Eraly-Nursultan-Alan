@@ -9,6 +9,6 @@ public class StudentObserver implements Observer {
 
     @Override
     public void update(String message) {
-        System.out.println("Notification for student " + name + ": new grade has been posted" + message);
+        System.out.println("Notification for student " + name + ": new grade has been posted " + message);
     }
 }
