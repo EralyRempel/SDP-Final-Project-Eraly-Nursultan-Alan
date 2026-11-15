@@ -5,6 +5,14 @@ import java.util.List;
 public class CourseEvaluator {
     private GradingStrategy strategy;
 
+
+    public CourseEvaluator(GradingStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+
+    public CourseEvaluator() {}
+
     public void setStrategy(GradingStrategy strategy) {
         this.strategy = strategy;
     }
