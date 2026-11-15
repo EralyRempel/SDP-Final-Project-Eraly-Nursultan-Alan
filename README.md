@@ -17,7 +17,7 @@ Each design pattern addresses a specific software design problem and demonstrate
 ### 2.1 Team Members
 
 - Eraly Rempel 
-- Nursultan Sabidaudanov
+- Nursultan Sabidoldanov
 - Alan Beisen
 
 
