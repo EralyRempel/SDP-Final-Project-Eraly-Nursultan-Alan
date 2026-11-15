@@ -1,13 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import adapter.BankPaymentAdapter;
+import adapter.LegacyBankService;
+import adapter.PaymentProcessor;
+import facade.SchoolEnrollmentFacade;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("=== ADAPTER & FACADE DEMO ===");
+        demoAdapterAndFacade();
+
+        // Сюда одногруппники добавят вызовы своих методов:
+        // demoObserverAndStrategy();
+        // demoFactoryAndBridge();
+    }
+
+    private static void demoAdapterAndFacade() {
+        // 1. Facade Pattern: enroll a new student across 4 subsystems with one call
+        SchoolEnrollmentFacade enrollmentFacade = new SchoolEnrollmentFacade();
+        String studentId = enrollmentFacade.enrollStudent("Alan Beisen", "10-A");
+
+        System.out.println();
+
+        // 2. Adapter Pattern: pay school tuition using an incompatible legacy bank API
+        LegacyBankService legacyBank = new LegacyBankService();
+        PaymentProcessor paymentProcessor = new BankPaymentAdapter(legacyBank, "USD");
+
+        boolean isPaid = paymentProcessor.processPayment(studentId, 250.50);
+        System.out.println("Tuition payment status: " + (isPaid ? "SUCCESS" : "FAILED"));
     }
 }
